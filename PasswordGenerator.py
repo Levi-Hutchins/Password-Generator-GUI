@@ -1,8 +1,10 @@
+# Importing all required modules
 import tkinter as tk
 from tkinter import ttk
 import string
 import random
 
+# This function is responsible for generating the random passwords
 def PasswordGenerator():
 
     everything = list(string.ascii_lowercase+string.ascii_uppercase+string.digits+"!@#$%^&()")
@@ -15,6 +17,7 @@ def PasswordGenerator():
 
     return generatedPassword
 
+# Once the passwords have been generated this tab will be created and will then display them
 def passwordsWindow():
     tab1 = ttk.Frame(tabControl)
     tabControl.add(tab1, text="Passwords ")
@@ -30,8 +33,11 @@ def passwordsWindow():
                                row = 0,
                                padx = 30,
                                pady = 30)
+    
+    # Call the storePassword function with the passwords as a parameter so it can save them in a file
     storePassword(displayPassword)
 
+# This function saves the passwords in a txt file within the current directory
 def storePassword(generatedPasswords):
 
     try:
@@ -41,6 +47,7 @@ def storePassword(generatedPasswords):
     except FileNotFoundError:
         print(passwordFile," Does not exist!")
 
+# The main function is responsible for the creation of the main GUI 
 def main():
     global win
     global tabControl
@@ -73,5 +80,5 @@ def main():
 
     win.mainloop()
 
-
+# Calling the main function so the program can run
 main()
